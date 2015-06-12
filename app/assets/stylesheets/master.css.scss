@@ -11,3 +11,16 @@
 	font-weight: 100;
 	color: white;
 }
+
+.hero {
+	background: url('hero3.jpg') no-repeat center center fixed;
+  	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	height: 410px;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar {
+  margin:0;
+}
