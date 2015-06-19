@@ -1,3 +1,3 @@
 class Lesson < ActiveRecord::Base
-	belong_to :section
+	belongs_to :section
 end
