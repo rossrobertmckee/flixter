@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'fog', '~> 1.3.1'
+gem 'carrierwave-aws'
 
 gem 'figaro'
 
