@@ -63,6 +63,7 @@
             <% if user_signed_in? %>
               <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
                 <li class="divider"></li>
+                <li><%= current_user.email %></li>
             <% else %>
             <!-- Trigger the modal with a button -->
               <li><a data-toggle="modal" href="#signinModal">Sign In</a></li>
