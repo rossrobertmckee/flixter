@@ -78,7 +78,6 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
 <% if notice.present? %>
   <p class="alert alert-info"><%= notice %></p>
 <% end %>
@@ -88,7 +87,7 @@
 
 <%= yield %>
 
-  </div>
+</div>
 
 <br class="clr" />
   
@@ -98,7 +97,7 @@
       <br />
       <%= link_to 'Teach a Course!', new_instructor_course_path %>
     </div>
-  </div>
+</div>
 
 </body>
 </html>
