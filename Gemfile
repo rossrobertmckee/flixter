@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem 'ranked-model'
+
 gem 'stripe'
 
 gem 'carrierwave-aws'
