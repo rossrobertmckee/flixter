@@ -21,7 +21,7 @@ class Instructor::LessonsController < ApplicationController
   private
 
   def require_authorized_for_current_lesson
-    if current_lesson.course.user != current_user
+    if current_lesson.section.course.user != current_user
       return render :text => 'Unauthorized', :status => :unauthorized
     end
   end
@@ -43,6 +43,6 @@ class Instructor::LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :subtitle, :video, :row_order)
+    params.require(:lesson).permit(:title, :subtitle, :video, :row_order_position)
   end
 end
