@@ -17,7 +17,6 @@
 <div id="wrap">
 	<nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -27,56 +26,31 @@
       </button>
       <%= link_to 'FLIXTER', root_path, :class => 'navbar-brand'%>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to 'Courses', courses_path%> <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-
-        
-
-       <!--  <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li> -->
+        <li><a href="#">About</a></li>
       </ul>
-      <!-- <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form> -->
       <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="#">Sign Up</a></li> -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list"></span> User Menu</a>
           <ul class="dropdown-menu" role="menu">
             <% if user_signed_in? %>
-              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-              <li><%= link_to 'My Dashboard', dashboard_path %></li>
+            <li><%= link_to 'My Dashboard', dashboard_path %></li>
+            <li><%= link_to 'Teach a Class', new_instructor_course_path %></li>
+            <li><%= link_to 'Profile', new_user_profile_path %></li>
                 <li class="divider"></li>
-                <li><%= current_user.email %></li>
+                  <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                  <li><%=  current_user.email %></li>
             <% else %>
-            <!-- Trigger the modal with a button -->
               <li><a data-toggle="modal" href="#signinModal">Sign In</a></li>
               <li><a data-toggle="modal" href="#signupModal">Sign Up</a></li>
-
             <% end %>
-<!--             <li><a href="#">Separated link</a></li> -->
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
 <% if notice.present? %>
@@ -99,6 +73,66 @@
       <%= link_to 'Teach a Course!', new_instructor_course_path %>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div id="signinModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4><span class="glyphicon glyphicon-user"></span> Login (Welcome Back!)</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(:user, :url => user_session_path) do |f| %>
+          <div class="inputs">
+            <%= f.input :email, :required => false, :autofocus => true %>
+            <%= f.input :password, :required => false %>
+          </div>
+      </div>
+      <div class="modal-footer">
+         <%= f.button :submit, "Sign in", :class => 'btn btn-primary' %>
+        <% end %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="signupModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4><span class="glyphicon glyphicon-edit"></span> Sign up! (A smart idea, btw)</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(:user, :url => user_registration_path) do |f| %>
+          <div class="inputs">
+            <%= f.input :email, :required => false, :autofocus => true %>
+            <%= f.input :user_name, :required => false %>
+            <%= f.input :password, :required => false %>
+            <%= f.input :password_confirmation %>
+          </div>
+      </div>
+      <div class="modal-footer">
+         <%= f.button :submit, "Sign Me Up!", :class => 'btn btn-primary' %>
+        <% end %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 </body>
 </html>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707204546) do
+ActiveRecord::Schema.define(version: 20150723235853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 20150707204546) do
   add_index "lessons", ["row_order"], name: "index_lessons_on_row_order", using: :btree
   add_index "lessons", ["section_id"], name: "index_lessons_on_section_id", using: :btree
 
+  create_table "profiles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sections", force: true do |t|
     t.string   "title"
     t.integer  "course_id"
@@ -79,6 +84,12 @@ ActiveRecord::Schema.define(version: 20150707204546) do
 
   add_index "sections", ["course_id"], name: "index_sections_on_course_id", using: :btree
   add_index "sections", ["row_order"], name: "index_sections_on_row_order", using: :btree
+
+  create_table "user_profiles", force: true do |t|
+    t.string "user_name"
+    t.string "location"
+    t.string "background"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -93,9 +104,11 @@ ActiveRecord::Schema.define(version: 20150707204546) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["user_name"], name: "index_users_on_user_name", using: :btree
 
 end

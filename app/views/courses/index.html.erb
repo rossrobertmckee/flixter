@@ -1,7 +1,7 @@
 <br />
 
 <div class="booyah-box col-xs-8 col-xs-offset-2">
-	<h1 class="text-center">Learn something today...</h1>
+	<h1 class="text-center">Available Courses</h1>
 	<hr />
 
 	<% @courses.each do |course| %>
@@ -16,6 +16,7 @@
       	<%= link_to 'More Details...', course_path(course), :class => 'btn btn-primary btn-large' %>
     	</div>
     	<br class="clr" />
+    	<hr />
 	<% end %>
 
 </div>

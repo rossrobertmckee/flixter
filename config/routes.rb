@@ -2,6 +2,7 @@ Flixter::Application.routes.draw do
   devise_for :users
   resource :dashboard, :only => [:show]
   root 'static_pages#index'
+  resources :user_profiles, :only => [:new, :create, :update]
   resources :courses, :only => [:index, :show] do
     resources :enrollments, :only => :create
   end
