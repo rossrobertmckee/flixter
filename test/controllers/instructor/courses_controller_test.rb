@@ -17,4 +17,11 @@ class Instructor::CoursesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+    test 'new' do
+    user = FactoryGirl.create(:user)
+    sign_in user
+    get :new
+    assert_response :success
+  end
+
 end
