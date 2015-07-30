@@ -2,8 +2,16 @@ class StaticPagesController < ApplicationController
 	def index
 	end
 
+	def privacy
+	end
 
-  	def resource_name
+	def about
+	end
+
+	def team
+	end
+
+  def resource_name
   	:user
 	end
 
